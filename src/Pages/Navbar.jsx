@@ -1,19 +1,17 @@
 import {
   Box,
   Flex,
-  HStack,
-  Link,
   IconButton,
   useDisclosure,
   useColorModeValue,
-  Stack,
   Button,
-  Heading,
   Text,
+  Image,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { useContext } from "react";
 import { AuthContext } from "../AuthContext/AuthContextProvider";
+import logoImage from "../assets/logo_image.jpg";
 
 const Links = [
   {
@@ -46,7 +44,12 @@ const Navbar = () => {
         bg={useColorModeValue("white")}
         px={4}
       >
-        <Flex h={20} alignItems={"center"} justifyContent={"space-between"}>
+        <Flex
+          px="1rem"
+          h={20}
+          alignItems={"center"}
+          justifyContent={"space-between"}
+        >
           <IconButton
             size={"md"}
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -54,12 +57,15 @@ const Navbar = () => {
             display={{ md: "none" }}
             onClick={isOpen ? onClose : onOpen}
           />
-          <Box spacing={8} alignItems={"center"}>
-            <a style={{ fontWeight: "500" }} href="/" className="logo">
-              <Text fontSize="1.3rem" fontWeight={"bold"}>
-                Infinity Scroll
-              </Text>
-            </a>
+
+          <Box pl="2rem">
+            <Image
+              width="120px"
+              h="80px"
+              objectFit="contain"
+              className="navbarImage"
+              src={logoImage}
+            />
           </Box>
           <Box>
             {isAuth ? (
@@ -69,9 +75,18 @@ const Navbar = () => {
                 bg={"#13B987"}
                 color={"white"}
               >
-                Logout
+                Logout 😶
               </Button>
-            ) : null}
+            ) : (
+              <Button
+                onClick={() => logoutFunction()}
+                _hover={{ bg: "black" }}
+                bg={"#13B987"}
+                color={"white"}
+              >
+                Hello.. 😁
+              </Button>
+            )}
           </Box>
         </Flex>
       </Box>

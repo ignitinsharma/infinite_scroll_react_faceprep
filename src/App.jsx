@@ -4,7 +4,7 @@ import React from "react";
 
 function App() {
   return (
-    <React.Fragment className="App">
+    <React.Fragment>
       <Navbar />
       <AllRoutes />
     </React.Fragment>
