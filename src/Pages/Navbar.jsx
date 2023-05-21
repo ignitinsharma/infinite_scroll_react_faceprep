@@ -5,31 +5,12 @@ import {
   useDisclosure,
   useColorModeValue,
   Button,
-  Text,
   Image,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { useContext } from "react";
 import { AuthContext } from "../AuthContext/AuthContextProvider";
 import logoImage from "../assets/logo_image.jpg";
-
-const Links = [
-  {
-    title: "Home",
-    id: 1,
-    path: "/",
-  },
-  {
-    title: "Mens",
-    id: 2,
-    path: "/mens",
-  },
-  {
-    title: "Women",
-    id: 3,
-    path: "/women",
-  },
-];
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -59,13 +40,15 @@ const Navbar = () => {
           />
 
           <Box pl="2rem">
-            <Image
-              width="120px"
-              h="80px"
-              objectFit="contain"
-              className="navbarImage"
-              src={logoImage}
-            />
+            <a href={isAuth ? "/home" : "/"}>
+              <Image
+                width={{ lg: "120px", md: "120px", base: "100px" }}
+                h="80px"
+                objectFit="contain"
+                className="navbarImage"
+                src={logoImage}
+              />
+            </a>
           </Box>
           <Box>
             {isAuth ? (

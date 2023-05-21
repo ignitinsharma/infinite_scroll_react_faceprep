@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
   Box,
-  Heading,
   Skeleton,
-  UnorderedList,
-  ListItem,
-  Spinner,
   useToast,
   Text,
   Flex,
@@ -18,10 +14,6 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const toast = useToast();
   const fetchUserLimit = 12;
-
-  useEffect(() => {
-    FetchAllUsers();
-  }, []);
 
   const FetchAllUsers = () => {
     try {
@@ -46,6 +38,12 @@ const Home = () => {
     }
   };
 
+  /* for Fetching when page first time rendor */
+  useEffect(() => {
+    FetchAllUsers();
+  }, []);
+
+  /* when user scroll then we want data then this use effect trigger */
   useEffect(() => {
     const handleScroll = () => {
       /* 
@@ -67,6 +65,9 @@ const Home = () => {
         greater than or equal to the total height of the document minus 20 pixels.
         */
       ) {
+        /* if loading is false meaning now we can fetch data and but after delay of 1 sec 
+            so at that time i wanna show loading to thats why i'm making loading True inside this... condition
+        */
         if (!loading) {
           setLoading(true);
           setTimeout(() => {
@@ -83,19 +84,17 @@ const Home = () => {
     };
   }, [loading]);
 
-  console.log(users);
-
   return (
     <Box height="auto" bg="rgba(0, 0, 0, 0)" pt={"5rem"} maxW="320px" mx="auto">
       <Box p={0}>
-        {users.map((user) => (
+        {users.map((user, index) => (
           <Box
+            key={index}
             _hover={{
               boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px;",
               transition: "0.3s ease-in-out",
             }}
             cursor="pointer"
-            key={user.id.value}
             py={2}
             px="0.5rem"
             borderRadius="8px"
@@ -118,8 +117,10 @@ const Home = () => {
       </Box>
       {loading && (
         <Box textAlign="center" mt={4}>
-          {/* Array.from({ length: 10 }) creates a new array with a length of 10. */}
-          {Array.from({ length: 10 }).map((undefined, index) => (
+          {/*creates a new array with a length of 10. if we are not 
+            filing the value so array is not irrable becuase of no value*/}
+
+          {new Array(10).fill(0).map((undefined, index) => (
             <Box key={index} borderWidth="1px" borderRadius="lg" p={4}>
               <Flex alignItems="center">
                 <Skeleton height="30px" width="100px" mr={2} />
