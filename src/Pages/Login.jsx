@@ -50,6 +50,18 @@ const Login = () => {
     }
   };
 
+  /* Adding Submit Event while enter... */
+  function handleKeyPress(event) {
+    /* if key is enter and also value present in state then we call handleSumit */
+    if (
+      event.key === "Enter" &&
+      loginFormData.email &&
+      loginFormData.password
+    ) {
+      handleSubmit();
+    }
+  }
+
   return (
     <Box pt={"5rem"}>
       <Box textAlign={"center"} py="1rem">
@@ -92,6 +104,7 @@ const Login = () => {
               placeholder="Enter your email"
               value={loginFormData.email}
               onChange={handleInputChange}
+              onKeyPress={handleKeyPress}
             />
           </FormControl>
 
@@ -103,6 +116,7 @@ const Login = () => {
               placeholder="Enter your password"
               value={loginFormData.password}
               onChange={handleInputChange}
+              onKeyPress={handleKeyPress}
             />
           </FormControl>
 

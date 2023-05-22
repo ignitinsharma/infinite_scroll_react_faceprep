@@ -13,7 +13,7 @@ const Home = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const toast = useToast();
-  const fetchUserLimit = 12;
+  const fetchUserLimit = 25;
 
   const FetchAllUsers = () => {
     try {
