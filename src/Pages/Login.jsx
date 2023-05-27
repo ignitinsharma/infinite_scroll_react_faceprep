@@ -101,7 +101,7 @@ const Login = () => {
             <Input
               type="email"
               name="email"
-              placeholder="Enter your email"
+              placeholder="email:- foo"
               value={loginFormData.email}
               onChange={handleInputChange}
               onKeyPress={handleKeyPress}
@@ -113,7 +113,7 @@ const Login = () => {
             <Input
               type="password"
               name="password"
-              placeholder="Enter your password"
+              placeholder="password:- bar"
               value={loginFormData.password}
               onChange={handleInputChange}
               onKeyPress={handleKeyPress}

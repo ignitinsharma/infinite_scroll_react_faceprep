@@ -13,7 +13,7 @@ const Home = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const toast = useToast();
-  const fetchUserLimit = 25;
+  const fetchUserLimit = 20;
 
   const FetchAllUsers = () => {
     try {
@@ -86,7 +86,7 @@ const Home = () => {
 
   return (
     <Box height="auto" bg="rgba(0, 0, 0, 0)" pt={"5rem"} maxW="320px" mx="auto">
-      <Box p={0}>
+      <Box h={"100vh"} autos p={0}>
         {users.map((user, index) => (
           <Box
             key={index}
